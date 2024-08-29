@@ -29,6 +29,9 @@ class Post(Base):
     user_id=Column(Integer,ForeignKey('user.id'))
     media=relationship(Media)
     Comment=relationship(Comment)
+    
+
+
 
 class User(Base):
     __tablename__='user'
@@ -37,13 +40,9 @@ class User(Base):
     firstname=Column(String(50),nullable=False)
     lastname=Column(String(50),nullable=False)
     email=Column(String(50),nullable=False)
-    follower_id=Column(Integer,ForeignKey('follower.user_to_id'))
-
+    
     post=relationship(Post)
     comment=relationship(Comment)
-
-
-
 
 class Follower(Base):
     __tablename__='follower'
@@ -51,6 +50,8 @@ class Follower(Base):
     user_to_id=Column(Integer,ForeignKey('user.id'))
     user_from_id=Column(Integer,ForeignKey('user.id'))
     user=relationship(User)
+
+
 
 
 
